@@ -71,8 +71,6 @@ jobs:
       timeout-minutes: 30
       run: |
         cd "/home/runner"
-        zip -j "openwrt-snapshot-rockchip-armv8-friendlyarm_nanopi-r2s-sysupgrade.zip" "openwrt-snapshot-rockchip-armv8-friendlyarm_nanopi-r2s-ext4-sysupgrade.img.gz" "openwrt-snapshot-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz" "openwrt-snapshot-sha256sums"
-        ${GITHUB_WORKSPACE}/scripts/upload_firmware.py  --device-name "FriendlyARM NanoPi R2S" --device-file "rockchip-armv8-friendlyarm_nanopi-r2s" --openwrt-version "snapshot" --kernel-version "5.4" --api-id "${{ secrets.TELEGRAM_API_ID }}" --api-hash "${{ secrets.TELEGRAM_API_HASH }}" --bot-token "${{ secrets.TELEGRAM_BOT_TOKEN }}" || exit 0
   Cleanup-Old-Artifacts:
     needs: [OpenWrt-Snapshot]
     runs-on: ubuntu-18.04
